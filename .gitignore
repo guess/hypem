@@ -24,3 +24,8 @@ proguard/
 
 # Log Files
 *.log
+
+# Django/Heroku
+venv
+*.pyc
+staticfiles
