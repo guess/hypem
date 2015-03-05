@@ -1,6 +1,5 @@
 # Hype Shuffle
-Shuffling songs from various Hype Machine pages to facilitate the exploration of
-new songs.
+Shuffling songs from various [Hype Machine](http://hypem.com/) pages to facilitate the exploration of new songs.
 
 ![Alt text](/screenshots/screenshots.png?raw=true)
 
