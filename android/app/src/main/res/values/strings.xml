@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Music</string>
+    <string name="random_queue_title">Shuffle</string>
+    <string name="error_no_metadata">Unable to retrieve metadata.</string>
+    <string name="favorite">Favourite</string>
+    <string name="label_previous">Previous</string>
+    <string name="label_next">Next</string>
+    <string name="label_pause">Pause</string>
+    <string name="label_play">Play</string>
+    <string name="album_artwork">Album artwork</string>
+    <string name="title_activity_music">Hype shuffle</string>
+    <string name="finding_songs">Finding your jams…</string>
+</resources>
