@@ -83,8 +83,8 @@ public class SongDownloadFragment extends Fragment {
 
         mIsDownloadInProgress = false;
 
-        // For now download the first 3 pages
-        if (mNextPage <= 3) {
+        // For now only download the first page
+        if (mNextPage <= 1) {
             downloadData(mNextPage);
         } else {
             mListener.onSongsDownloaded();
