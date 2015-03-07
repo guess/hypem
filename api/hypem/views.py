@@ -142,6 +142,7 @@ def download(name, mode, num, sort=None):
             song = {}
 
             # Update song's metadata
+            song['media_id'] = track_list[track][u'id']
             song['artist'] = metadata[str(track)].get(u'artist', None)
             song['title'] = metadata[str(track)].get(u'title', None)
             song['date_posted'] = metadata[str(track)].get(u'dateposted', None)
