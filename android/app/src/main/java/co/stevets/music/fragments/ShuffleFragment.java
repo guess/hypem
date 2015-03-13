@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import java.util.List;
 
+import co.stevets.music.managers.MusicDatabase;
 import co.stevets.music.models.Song;
 import co.stevets.music.network.ApiClient;
 import co.stevets.music.utils.Common;
@@ -14,7 +15,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 
-public class SongDownloadFragment extends Fragment {
+public class ShuffleFragment extends Fragment {
 
     private int mNextPage = 1;
     private boolean mIsDownloadInProgress = false;
@@ -23,7 +24,7 @@ public class SongDownloadFragment extends Fragment {
 
     private OnSongsDownloadedListener mListener;
 
-    public SongDownloadFragment() {
+    public ShuffleFragment() {
         // Required empty public constructor
     }
 
@@ -31,6 +32,8 @@ public class SongDownloadFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApp = (Common) getActivity().getApplicationContext();
+        MusicDatabase db = new MusicDatabase(mApp);
+        db.clearSongs();
         downloadData(mNextPage);
     }
 
