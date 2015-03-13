@@ -78,6 +78,7 @@ public class NowPlayingFragment extends Fragment {
 
         // Song title
         mTitle = (TextView) view.findViewById(R.id.title);
+        mTitle.setSelected(true);   // Marquee text if too long
 
         // Song artist
         mArtist = (TextView) view.findViewById(R.id.artist);
@@ -310,6 +311,7 @@ public class NowPlayingFragment extends Fragment {
         public static final int FAV         = 4;
 
         public void onButtonPressed(int action);
+        public void startDownload();
     }
 
 }
