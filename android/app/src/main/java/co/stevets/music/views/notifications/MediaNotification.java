@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package co.stevets.music.network;
+package co.stevets.music.views.notifications;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -43,6 +43,7 @@ import com.squareup.picasso.Picasso;
 import java.io.IOException;
 
 import co.stevets.music.R;
+import co.stevets.music.network.MusicService;
 import co.stevets.music.utils.Common;
 
 /**
