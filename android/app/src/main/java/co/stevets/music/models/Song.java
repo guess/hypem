@@ -9,55 +9,71 @@ import com.google.gson.annotations.SerializedName;
  */
 public class Song {
 
+    @SerializedName("time")
     @Expose
-    private int time;
+    private int duration;
+
     @Expose
     private String url;
+
     @SerializedName("date_posted")
     @Expose
     private int datePosted;
+
     @SerializedName("loved_count")
     @Expose
     private int lovedCount;
+
     @SerializedName("thumb_url_medium")
     @Expose
     private String thumbUrlMedium;
+
     @SerializedName("thumb_url_artist")
     @Expose
     private String thumbUrlArtist;
+
     @Expose
     private String title;
+
     @SerializedName("post_url")
     @Expose
     private String postUrl;
+
     @Expose
     private String artist;
+
     @SerializedName("posted_count")
     @Expose
     private int postedCount;
+
     @SerializedName("thumb_url_large")
     @Expose
     private String thumbUrlLarge;
+
     @SerializedName("thumb_url")
     @Expose
     private String thumbUrl;
+
+    @SerializedName("media_id")
+    @Expose
+    private String mediaId;
 
     /**
      * 
      * @return
      *     The time of the song in milliseconds
      */
-    public int getTime() {
-        return time;
+    public int getDuration() {
+        return duration;
     }
 
     /**
      * 
-     * @param time
+     * @param duration
      *     The time of the song in milliseconds
      */
-    public void setTime(int time) {
-        this.time = time;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     /**
@@ -256,6 +272,24 @@ public class Song {
      */
     public void setThumbUrl(String thumbUrl) {
         this.thumbUrl = thumbUrl;
+    }
+
+    /**
+     *
+     * @return
+     *     The media ID of the song
+     */
+    public String getMediaId() {
+        return mediaId;
+    }
+
+    /**
+     *
+     * @param mediaId
+     *     The media ID of the song
+     */
+    public void setMediaId(String mediaId) {
+        this.mediaId = mediaId;
     }
 
 }

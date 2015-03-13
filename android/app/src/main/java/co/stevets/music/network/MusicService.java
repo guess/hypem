@@ -21,9 +21,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.stevets.music.R;
+import co.stevets.music.managers.MusicDatabase;
 import co.stevets.music.models.MusicProvider;
 import co.stevets.music.utils.Common;
 import co.stevets.music.utils.QueueHelper;
+import co.stevets.music.views.notifications.MediaNotification;
 
 
 public class MusicService extends Service implements MediaPlayer.OnPreparedListener,
@@ -150,6 +152,10 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         // In particular, always release the MediaSession to clean up resources
         // and notify associated MediaController(s).
         mSession.release();
+
+        // Remove songs that are not favourites
+        MusicDatabase db = new MusicDatabase(this);
+        db.clearSongs();
     }
 
 
@@ -558,6 +564,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
                     "player is stuck in a deadlock. This is a known issue. In the meantime, you " +
                     "will need to restart the device.");
             try {
+                // TODO: Source can be null
                 mMediaPlayer.setDataSource(source);
             } finally {
                 Log.d(TAG, "****** playCurrentSong: setDataSource finished, no deadlock :-)");
@@ -595,7 +602,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         }
         MediaSession.QueueItem queueItem = mPlayingQueue.get(mCurrentIndexOnQueue);
         String mediaId = queueItem.getDescription().getMediaId();
-        MediaMetadata track = mMusicProvider.getMusic(mediaId);
+        MediaMetadata track = mMusicProvider.getSong(mediaId);
         String trackId = track.getString(Common.METADATA_MEDIA_ID);
         if (!mediaId.equals(trackId)) {
             throw new IllegalStateException("track ID (" + trackId + ") " +
@@ -678,7 +685,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
             MediaSession.QueueItem item = mPlayingQueue.get(mCurrentIndexOnQueue);
             if (item != null) {
                 Log.d(TAG, "getCurrentPlayingMusic for musicId=" + item.getDescription().getMediaId());
-                return mMusicProvider.getMusic(item.getDescription().getMediaId());
+                return mMusicProvider.getSong(item.getDescription().getMediaId());
             }
         }
         return null;

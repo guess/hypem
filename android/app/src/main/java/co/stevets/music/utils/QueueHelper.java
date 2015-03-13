@@ -4,8 +4,6 @@ import android.media.MediaMetadata;
 import android.media.session.MediaSession;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import co.stevets.music.models.MusicProvider;
@@ -59,15 +57,7 @@ public class QueueHelper {
      * @return  A random queue of media session queue items.
      */
     public static final List<MediaSession.QueueItem> getRandomQueue(MusicProvider musicProvider) {
-        Iterator<String> pages = musicProvider.getPages().iterator();
-        if (!pages.hasNext()) {
-            return new ArrayList<>();
-        }
-
-        // TODO: For simplicity only use the first page
-        String page = pages.next();
-        Iterable<MediaMetadata> tracks = musicProvider.getMusicsByPage(page);
-
+        Iterable<MediaMetadata> tracks = musicProvider.getRandomSongs();
         return convertToQueue(tracks);
     }
 
@@ -96,7 +86,6 @@ public class QueueHelper {
                     track.getDescription(), count++);
             queue.add(item);
         }
-        Collections.shuffle(queue);
         return queue;
 
     }
